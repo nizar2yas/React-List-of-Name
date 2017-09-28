@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Search from './Search.js';
+import Add from './Add.js';
 
 class PersonsList extends Component {
     constructor(props) {
@@ -16,6 +17,9 @@ class PersonsList extends Component {
             filter: val
         })
     }
+    handleAdd(value){
+        this.props.add(value)
+      };
     render() {
         const persons_list = this.props.persons.filter(person=>{
             return person.name.toLowerCase().indexOf(this.state.filter.toLowerCase())>=0;
@@ -26,13 +30,14 @@ class PersonsList extends Component {
         return (
             <div>
                 <div>
-                    <Search handleFilter={this.handleFilter.bind(this)} />
+                    <Search handleFilter={this.handleFilter.bind(this)} />{''}
                 </div>
                 <nav>
                     <ul>
                         {persons_list}
                     </ul>
                 </nav>
+                <Add  add={this.handleAdd.bind(this)} />
             </div>
         )
     }

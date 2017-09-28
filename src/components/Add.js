@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
-class Edit extends Component {
+class Add extends Component {
     constructor(props) {
         super(props);
         this.saveAction.bind(this);
-        this.state = { person: this.props.person };
+        this.state = { show: false };
     }
     getInitialState() {
         return { show: false };
     }
     saveAction() {
-        var val = { id: this.state.person.id, name: this.refs.nameInput.value, age: this.refs.ageInput.value };
-        this.setState({
-            person: val
-        }, function () {
-            this.props.save(this.state.person)
-        });
+        var val = { name: this.refs.nameInput.value, age: this.refs.ageInput.value };
+        this.props.add(val);
         this.setState({ show: false });
     }
 
@@ -30,7 +26,7 @@ class Edit extends Component {
                     bsSize="large"
                     onClick={() => this.setState({ show: true })}
                 >
-                    Edit
+                    ADD
           </Button>
 
                 <Modal
@@ -40,13 +36,13 @@ class Edit extends Component {
                     aria-labelledby="contained-modal-title"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title">Edit {this.props.person.name}'s details</Modal.Title>
+                        <Modal.Title id="contained-modal-title">Add a person </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form>
                             <span > name:</span>
-                            <input type="text" defaultValue={this.state.person.name} ref="nameInput" />
-                            <span >Age:</span>  <input type="text" defaultValue={this.state.person.age} ref="ageInput" /> {''}
+                            <input type="text" placeholder="person's name" ref="nameInput" />
+                            <span >Age:</span>  <input type="text" placeholder="person's age" ref="ageInput" /> {''}
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
@@ -59,4 +55,4 @@ class Edit extends Component {
     }
 };
 
-export default Edit;
+export default Add;

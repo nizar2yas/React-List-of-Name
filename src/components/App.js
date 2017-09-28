@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import PersonsList from './PersonsList.js';
 import Details from './Details.js';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,27 +14,34 @@ class App extends Component {
     })
   };
   handleSave(value) {
-    console.log("id:"+value.id);
     this.state.persons.map(p => {
       if (p.id === value.id) {
         p.name = value.name;
         p.age = value.age;
       }
-      console.log(p);
       return p;
     })
+  };
+  handleAdd(value){
+    var id =this.state.persons.length;
+    id++;
+    var person={id:id, name:value.name, age:value.age};
+    this.state.persons.push(person);
+    this.setState({persons:this.state.persons});
   };
 
   render() {
     return (
-      <nav>
-        <Switch>
-          <Route exact path='/'
-            render={(props) => (<PersonsList selectPerson={this.handlSelection.bind(this)} persons={this.state.persons} />)} />
-          <Route path='/detail/'
-            render={(props) => (<Details save={this.handleSave.bind(this)} person={this.state.selectedPerson} />)} />
-        </Switch>
-      </nav>
+      <div>
+        <nav>
+          <Switch>
+            <Route exact path='/'
+              render={(props) => (<PersonsList add={this.handleAdd.bind(this)} selectPerson={this.handlSelection.bind(this)} persons={this.state.persons} />)} />
+            <Route path='/detail/'
+              render={(props) => (<Details save={this.handleSave.bind(this)} person={this.state.selectedPerson} />)} />
+          </Switch>
+        </nav>
+      </div>
     )
   }
 }
