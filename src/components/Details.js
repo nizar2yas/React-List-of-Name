@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SkyLight from 'react-skylight';
 import Edit from './Edit.js'
 import { Button } from 'react-bootstrap';
 
