@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class Search extends Component {
     handleInput(){
-        console.log("Search :\t "+this.refs.filterValue.value);
         this.props.handleFilter(this.refs.filterValue.value)
     }
     render() {

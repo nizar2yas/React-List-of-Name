@@ -8,12 +8,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedPerson: '', filter: '' };
-  }
+  };
   handlSelection(p) {
     this.setState({
       selectedPerson: p
     })
-  }
+  };
+  handleSave(value){
+
+  };
 
   render() {
     return (
@@ -21,7 +24,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/'
             render={(props) => (<PersonsList selectPerson={this.handlSelection.bind(this)} persons={this.props.persons} />)} />
-          <Route path='/detail/' render={(props) => (<Details test={this.state.selectedPerson} />)} />
+          <Route path='/detail/' 
+          render={(props) => (<Details save={this.handleSave.bind(this)} test={this.state.selectedPerson} />)} />
         </Switch>
       </nav>
     )
