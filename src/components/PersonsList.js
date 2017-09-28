@@ -15,7 +15,6 @@ class PersonsList extends Component {
         this.setState({
             filter: val
         })
-        console.log("List :\t " + this.state.filter);
     }
     render() {
         const persons_list = this.props.persons.filter(person=>{

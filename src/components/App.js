@@ -7,15 +7,23 @@ import Details from './Details.js';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedPerson: '', filter: '' };
+    this.state = { selectedPerson: '', filter: '', persons: this.props.persons };
   };
   handlSelection(p) {
     this.setState({
       selectedPerson: p
     })
   };
-  handleSave(value){
-
+  handleSave(value) {
+    console.log("id:"+value.id);
+    this.state.persons.map(p => {
+      if (p.id === value.id) {
+        p.name = value.name;
+        p.age = value.age;
+      }
+      console.log(p);
+      return p;
+    })
   };
 
   render() {
@@ -23,9 +31,9 @@ class App extends Component {
       <nav>
         <Switch>
           <Route exact path='/'
-            render={(props) => (<PersonsList selectPerson={this.handlSelection.bind(this)} persons={this.props.persons} />)} />
-          <Route path='/detail/' 
-          render={(props) => (<Details save={this.handleSave.bind(this)} test={this.state.selectedPerson} />)} />
+            render={(props) => (<PersonsList selectPerson={this.handlSelection.bind(this)} persons={this.state.persons} />)} />
+          <Route path='/detail/'
+            render={(props) => (<Details save={this.handleSave.bind(this)} person={this.state.selectedPerson} />)} />
         </Switch>
       </nav>
     )
