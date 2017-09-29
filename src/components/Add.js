@@ -42,7 +42,7 @@ class Add extends Component {
                         <form>
                             <span > name:</span>
                             <input type="text" placeholder="person's name" ref="nameInput" />
-                            <span >Age:</span>  <input type="text" placeholder="person's age" ref="ageInput" /> {''}
+                            <span >Age:</span>  <input type="number" placeholder="person's age" ref="ageInput" /> {''}
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
