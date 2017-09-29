@@ -46,7 +46,7 @@ class Edit extends Component {
                         <form>
                             <span > name:</span>
                             <input type="text" defaultValue={this.state.person.name} ref="nameInput" />
-                            <span >Age:</span>  <input type="text" defaultValue={this.state.person.age} ref="ageInput" /> {''}
+                            <span >Age:</span>  <input type="number" defaultValue={this.state.person.age} ref="ageInput" /> {''}
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
