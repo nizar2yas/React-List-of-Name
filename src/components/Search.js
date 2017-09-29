@@ -7,7 +7,7 @@ class Search extends Component {
     render() {
         return (
             <form>
-                <input type="text" placeholder="Search for a person" ref="filterValue" 
+                <input type="number" placeholder="Search for a person" ref="filterValue" 
                 onChange={this.handleInput.bind(this)}/>
             </form>
         )
